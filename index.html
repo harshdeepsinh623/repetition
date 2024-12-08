@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enter and Sum Values</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        input, button {
+            padding: 10px;
+            margin: 5px 0;
+            width: 100%;
+        }
+        .output {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Enter Numbers</h1>
+        <input type="number" id="inputValue" placeholder="Enter a number">
+        <button onclick="addValue()">Add Value</button>
+        <div class="output">
+            <h2>Values:</h2>
+            <ul id="valuesList"></ul>
+            <h2>Sum: <span id="sum"></span></h2>
+        </div>
+    </div>
+
+    <script>
+        let sum_result = 0; 
+        let i = 1;   
+              
+        const valuesList = document.getElementById("valuesList");
+        const sumElement = document.getElementById("sum");
+
+        function addValue() {
+            const input = document.getElementById("inputValue");
+            const value = parseFloat(input.value);
+
+            if (!isNaN(value)) {
+             
+                for (let count = 0; count < value; count++) {
+                    sum_result = sum_result + i; 
+                    i = i + 1; 
+                }
+
+                displayValues(value); 
+                updateSum();     
+            } 
+            else 
+            {
+                alert("Please enter a valid number!");
+            }
+        }
+
+        function displayValues(value) {
+            const li = document.createElement("li");
+            li.textContent = `Value: ${value}`;
+            valuesList.appendChild(li);
+            sumElement.textContent = sum_result; 
+        }
+    </script>
+</body>
+</html>
